@@ -1,0 +1,421 @@
+@import "./Abstracts/mixin";
+@import "./Layout/grid";
+@import "./Base/animation";
+
+$color-black: rgb(0, 0, 0);
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+html {
+    min-width: 375px;
+    @include respond(tab-land) {
+        font-size: 12px;
+    }
+
+    @include respond(phone) {
+        font-size: 8px;
+    }
+
+    @include respond(tab-port) {
+        font-size: 10px;
+    }
+
+    @include respond(big-desktop) {
+        font-size: 16px;
+    }
+    padding: 0 1rem;
+}
+
+.header {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right bottom, rgba(129, 245, 222, 0.8), rgba(62, 156, 177, 0.6)),
+        url("../image/lucdiaTayvat.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    /* clippy */
+    clip-path: ellipse(74% 68% at 51% 32%);
+
+    &__logo-box {
+        position: absolute;
+        top: 1vh;
+        left: 1vw;
+    }
+
+    &__logo {
+        width: 20vw;
+        height: 15vh;
+        @include respond(phone) {
+            width: 40vw;
+            height: 15vh;
+        }
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        transform: translate(-50%, -60%);
+    }
+
+    &__image-box {
+        position: absolute;
+        top: 15%;
+        left: 60%;
+        display: none;
+    }
+
+    &__image-box img {
+        width: 30vw;
+        height: 60vh;
+    }
+}
+
+.heading-one {
+    margin-bottom: 2vh;
+    /*animation */
+    animation: animation-heading 2s ease-out;
+
+    &--xxl {
+        display: block;
+        font-size: 4.7rem;
+        /* font-weight: bold; */
+        /* text-transform: uppercase; */
+        font-family: "Lobster", cursive;
+    }
+}
+
+.btn {
+    &,
+    &btn:visited,
+    &btn:link {
+        display: block;
+        padding: 10px 0px;
+        text-align: center;
+        width: 10vmax;
+        font-weight: bolder;
+        text-transform: uppercase;
+        border-radius: 5vmax;
+        position: relative;
+    }
+
+    &--white {
+        background-color: aliceblue;
+        color: rgb(91, 216, 216);
+
+        /*animation */
+        animation-name: animation-heading-button;
+        animation-duration: 2s;
+        animation-delay: 1s;
+        animation-fill-mode: backwards;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0px 5px 20px rgba($color-black, 0.8);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.4);
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0px 5px 20px rgba($color-black, 0.8);
+    }
+
+    &::after {
+        content: " ";
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: aliceblue;
+        color: rgb(91, 216, 216);
+        border-radius: 5vmax;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+}
+
+.heading-two {
+    width: 50%;
+
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+
+    margin-bottom: 3rem;
+
+    background-image: linear-gradient(to right, rgb(177, 207, 243), rgb(4, 68, 108));
+    color: transparent;
+    -webkit-background-clip: text;
+
+    cursor: pointer;
+
+    transition: all 0.2s;
+
+    &--xxl {
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    &--xl {
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #000;
+    }
+
+    &--l {
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: rgb(29, 3, 3);
+    }
+
+    &:hover {
+        transform: skewY(6deg) scale(1.1);
+
+        text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
+    }
+}
+
+.section-about {
+    width: 100%;
+
+    background-color: rgb(212, 226, 223);
+    margin-top: -5rem;
+    padding-top: 7rem;
+}
+
+.heading-three {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.p-long {
+    text-indent: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.image-component {
+    position: relative;
+    margin-bottom: 5rem;
+    min-height: 20rem;
+    &__photo {
+        & img {
+            width: 50%;
+            border-radius: 0.3rem;
+            position: absolute;
+            box-shadow: 0rem 0.5rem 1rem rgba($color-black, 0.2);
+
+            &:hover {
+                transform: scale(1.8) translateX(3rem);
+                outline: solid 0.5rem rgba(67, 53, 90, 0.8);
+                box-shadow: 0rem 0.5rem 1rem rgba($color-black, 0.2);
+                z-index: 20;
+                padding: 0.5rem;
+            }
+        }
+
+        &--i1 {
+            top: 0rem;
+            left: 0rem;
+        }
+
+        &--i2 {
+            top: 5rem;
+            left: 7rem;
+        }
+
+        &--i3 {
+            top: 2rem;
+            left: 4rem;
+        }
+    }
+}
+
+.btn-link {
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 5rem;
+    padding: 0.2rem;
+    padding-left: 0rem;
+    border-bottom: solid 0.1rem;
+
+    &:hover {
+        background-color: rgb(129, 245, 222);
+    }
+}
+
+.section-place {
+    background-color: rgb(25, 113, 94);
+    margin-top: -5rem;
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+
+    width: 100%;
+
+    background-image: linear-gradient(to right bottom, rgba(96, 79, 80, 0.8), rgba(28, 194, 231, 0.6)),
+        url("../image/lucdiaTayvat.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    /* clippy */
+    clip-path: ellipse(80% 50% at 50% 50%);
+}
+
+.detail-box {
+    padding: 2rem 2rem;
+    border: solid 0.1rem;
+    border-radius: 2rem;
+
+    background-color: rgba(236, 203, 203, 0.2);
+    box-shadow: 0rem 0.5rem 1rem rgba($color-black, 0.8);
+
+    &__content {
+        min-height: 18rem;
+        max-height: 18rem;
+
+        overflow: auto;
+    }
+
+    &__logo {
+        & img {
+            width: 100%;
+            max-height: 20rem;
+            min-height: 20rem;
+        }
+    }
+    &:hover {
+        transform: translateY(-1rem) scale(1.05);
+        transition: all 0.3s;
+    }
+}
+
+.row-detail {
+    &:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+}
+
+.navigation {
+    position: relative;
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__button {
+        border-radius: 50%;
+        background-color: rgba(255, 248, 248, 0.8);
+        position: fixed;
+        top: 1rem;
+        right: 3rem;
+        z-index: 8888;
+
+        height: 4rem;
+        width: 4rem;
+    }
+
+    &__background {
+        border-radius: 50%;
+        background-color: rgba(8, 86, 131, 1);
+        position: fixed;
+        top: 1rem;
+        right: 3rem;
+        z-index: 7777;
+
+        height: 4rem;
+        width: 4rem;
+
+        transition: all 0.5s;
+    }
+
+    &__checkbox:checked ~ &__background {
+        transform: scale(100);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        display: block;
+    }
+
+    &__nav {
+        display: none;
+        z-index: 8000;
+        position: fixed;
+
+        width: 40%;
+
+        @include respond(tab-port) {
+            width: 60%;
+        }
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        margin: 0 auto;
+
+        &--list {
+            text-align: center;
+            list-style: none;
+            text-decoration: none;
+            margin: 0 auto;
+        }
+
+        &--item {
+            display: block;
+            border-radius: 5rem;
+            &:hover {
+                background-color: white;
+
+                transform: translateY(-2rem) scale(1.1);
+                transition: all 0.3s;
+                box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.6);
+
+                & a {
+                    background-image: linear-gradient(to right, rgb(177, 207, 243), rgb(211, 150, 37));
+                    color: transparent;
+                    -webkit-background-clip: text;
+                }
+            }
+
+            margin-bottom: 2rem;
+            & a {
+                color: azure;
+                font-size: 4em;
+            }
+
+            & a:active ~ .navigation {
+                display: none;
+            }
+        }
+    }
+}
+
+.footer {
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: -3rem;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+}
